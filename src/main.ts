@@ -13,6 +13,11 @@ const main = () => {
   dialog1Button?.addEventListener('click', () => {
     dialog1.showModal()
   })
+
+  const dialog1Close = document.getElementById('dialog1Close')
+  dialog1Close?.addEventListener('click', () => {
+    dialog1.close()
+  })
 }
 
 main()

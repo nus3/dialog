@@ -4,6 +4,7 @@
   --primary-color-hover-opacity: hsl(160 55% 55% / 0.8);
   --primary-light: #abf1da;
   --bgBase-color: hsl(216 18% 16%);
+  --bgBase-color-opacity: hsl(216 18% 16% / 0.4);
   --bgBase-light-color: hsl(216 10% 24%);
   --bgDialog-color: hsl(218 10% 33%);
   --dialog-shadow: 0px 20px 36px 0px rgba(0, 0, 0, 0.6);
@@ -99,8 +100,15 @@ body {
   align-items: center;
   background-color: transparent;
   border: none;
+  border-radius: 50%;
   cursor: pointer;
   transition: outline-offset 0.1s ease;
+  width: 40px;
+  height: 40px;
+}
+
+.dialog-header-close-button:hover {
+  background-color: var(--bgBase-color-opacity);
 }
 
 .dialog-header-close-button:not(:active):focus-visible {
