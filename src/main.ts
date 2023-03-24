@@ -4,7 +4,12 @@ const isDialogElement = (target: unknown): target is HTMLDialogElement => {
   return target instanceof HTMLDialogElement
 }
 
-const main = () => {
+// const waitDialogAnimation = (dialog: HTMLDialogElement) =>
+//   Promise.allSettled(
+//     dialog.getAnimations().map((animation) => animation.finished),
+//   )
+
+const main = async () => {
   const dialog1Button = document.getElementById('dialog1Button')
   const dialog1 = document.getElementById('dialog1')
 
@@ -21,3 +26,8 @@ const main = () => {
 }
 
 main()
+
+// 残りやること
+// スクリーンリーダで読み込まれないようにinertをつける
+// 背景がスクロールしないように
+// フォームがあるダイアログ

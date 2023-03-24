@@ -11,24 +11,24 @@
         dialog1
       </button>
       <button type="button" class="button top-button">dialog2</button>
+      <dialog id="dialog1" class="dialog1">
+        <header class="dialog-header">
+          <span class="dialog-header-title">ヘッダーだよ</span>
+          <button id="dialog1Close" class="dialog-header-close-button">
+            <ion-icon
+              class="dialog-header-close-icon"
+              name="close-outline"
+              size="large"
+            ></ion-icon>
+          </button>
+        </header>
+        <div class="dialog-content">コンテンツだよ</div>
+        <footer class="dialog-footer">
+          <button class="button dialog-footer-button">yes</button>
+          <button class="button dialog-footer-button">no</button>
+        </footer>
+      </dialog>
     </main>
-    <dialog id="dialog1" class="dialog1">
-      <header class="dialog-header">
-        <span class="dialog-header-title">ヘッダーだよ</span>
-        <button id="dialog1Close" class="dialog-header-close-button">
-          <ion-icon
-            class="dialog-header-close-icon"
-            name="close-outline"
-            size="large"
-          ></ion-icon>
-        </button>
-      </header>
-      <div class="dialog-content">コンテンツだよ</div>
-      <footer class="dialog-footer">
-        <button class="button dialog-footer-button">yes</button>
-        <button class="button dialog-footer-button">no</button>
-      </footer>
-    </dialog>
     <script type="module" src="/src/main.ts"></script>
     <script
       type="module"
