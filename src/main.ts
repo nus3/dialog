@@ -9,7 +9,7 @@ const waitDialogAnimation = (dialog: HTMLDialogElement) =>
     dialog.getAnimations().map((animation) => animation.finished),
   )
 
-const main = async () => {
+const dialog1 = async () => {
   const dialog1Button = document.getElementById('dialog1Button')
   const dialog1 = document.getElementById('dialog1')
 
@@ -30,7 +30,9 @@ const main = async () => {
       document.documentElement.removeAttribute('style')
     }
   })
+}
 
+const dialog2 = () => {
   const dialog2Button = document.getElementById('dialog2Button')
   const dialog2 = document.getElementById('dialog2')
 
@@ -44,6 +46,11 @@ const main = async () => {
   dialog2Close?.addEventListener('click', () => {
     dialog2.close()
   })
+}
+
+const main = async () => {
+  dialog1()
+  dialog2()
 }
 
 main()
