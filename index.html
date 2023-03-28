@@ -7,18 +7,25 @@
   </head>
   <body>
     <main class="main">
-      <button id="dialog1Button" type="button" class="button top-button">
-        dialog1
-      </button>
-      <button id="dialog2Button" type="button" class="button top-button">
-        dialog2
-      </button>
+      <section class="main-section">
+        <button id="dialog1Button" type="button" class="button top-button">
+          dialog1
+        </button>
+        <button id="dialog2Button" type="button" class="button top-button">
+          dialog2
+        </button>
+      </section>
+
+      <section class="second-section">Second Section</section>
     </main>
 
     <dialog id="dialog1" class="dialog1" style="display: none">
       <header class="dialog-header">
-        <span class="dialog-header-title">ヘッダーだよ</span>
-        <button id="dialog1Close" class="dialog-header-close-button">
+        <span class="dialog-header-title">Header</span>
+        <button
+          onclick="this.closest('dialog').close()"
+          class="dialog-header-close-button"
+        >
           <ion-icon
             class="dialog-header-close-icon"
             name="close-outline"
@@ -26,14 +33,24 @@
           ></ion-icon>
         </button>
       </header>
-      <div class="dialog-content">コンテンツだよ</div>
+      <div class="dialog-content">Contents</div>
       <footer class="dialog-footer">
-        <button class="button dialog-footer-button">yes</button>
-        <button class="button dialog-footer-button">no</button>
+        <button
+          onclick="this.closest('dialog').close()"
+          class="button dialog-footer-button"
+        >
+          ok
+        </button>
+        <button
+          onclick="this.closest('dialog').close()"
+          class="button dialog-footer-button"
+        >
+          cancel
+        </button>
       </footer>
     </dialog>
     <dialog id="dialog2" class="dialog2">
-      hoge
+      foo
       <button id="dialog2Close" class="dialog-header-close-button">
         <ion-icon
           class="dialog-header-close-icon"

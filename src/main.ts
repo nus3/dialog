@@ -15,20 +15,19 @@ const main = async () => {
 
   if (!isDialogElement(dialog1)) return
 
-  dialog1Button?.addEventListener('click', () => {
+  dialog1Button?.addEventListener('click', async () => {
+    await waitDialogAnimation(dialog1)
+
     dialog1.removeAttribute('style')
     dialog1.showModal()
-  })
-
-  const dialog1Close = document.getElementById('dialog1Close')
-  dialog1Close?.addEventListener('click', () => {
-    dialog1.close()
+    document.documentElement.style.overflow = 'hidden'
   })
 
   dialog1.addEventListener('close', async (e) => {
     if (isDialogElement(e.target)) {
       await waitDialogAnimation(e.target)
       dialog1.style.display = 'none'
+      document.documentElement.removeAttribute('style')
     }
   })
 
@@ -50,5 +49,4 @@ const main = async () => {
 main()
 
 // 残りやること
-// 背景がスクロールしないように
 // フォームがあるダイアログ
