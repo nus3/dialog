@@ -19,10 +19,11 @@
       <section class="second-section">Second Section</section>
     </main>
 
-    <dialog id="dialog1" class="dialog1" style="display: none">
+    <dialog id="dialog1" class="dialog" style="display: none">
       <header class="dialog-header">
         <span class="dialog-header-title">Header</span>
         <button
+          type="button"
           onclick="this.closest('dialog').close()"
           class="dialog-header-close-button"
         >
@@ -36,12 +37,14 @@
       <div class="dialog-content">Contents</div>
       <footer class="dialog-footer">
         <button
+          type="button"
           onclick="this.closest('dialog').close()"
           class="button dialog-footer-button"
         >
           ok
         </button>
         <button
+          type="button"
           onclick="this.closest('dialog').close()"
           class="button dialog-footer-button"
         >
@@ -49,15 +52,60 @@
         </button>
       </footer>
     </dialog>
-    <dialog id="dialog2" class="dialog2">
-      foo
-      <button id="dialog2Close" class="dialog-header-close-button">
-        <ion-icon
-          class="dialog-header-close-icon"
-          name="close-outline"
-          size="large"
-        ></ion-icon>
-      </button>
+
+    <dialog id="dialog2" class="dialog">
+      <header class="dialog-header">
+        <span class="dialog-header-title">Header</span>
+        <button
+          type="button"
+          onclick="this.closest('dialog').close('close')"
+          class="dialog-header-close-button"
+        >
+          <ion-icon
+            class="dialog-header-close-icon"
+            name="close-outline"
+            size="large"
+          ></ion-icon>
+        </button>
+      </header>
+      <form class="form" method="dialog">
+        <div class="text-field">
+          <label for="name">Name</label>
+          <input
+            class="input"
+            type="text"
+            id="name"
+            name="name"
+            autocomplete="off"
+          />
+        </div>
+        <div class="text-field">
+          <label for="email">E-Mail</label>
+          <input
+            class="input"
+            type="email"
+            id="email"
+            name="email"
+            autocomplete="off"
+          />
+        </div>
+        <footer class="dialog-footer">
+          <button
+            type="submit"
+            class="button dialog-footer-button"
+            value="submit"
+          >
+            submit
+          </button>
+          <button
+            type="button"
+            onclick="this.closest('dialog').close('close')"
+            class="button dialog-footer-button"
+          >
+            cancel
+          </button>
+        </footer>
+      </form>
     </dialog>
 
     <script type="module" src="/src/main.ts"></script>
