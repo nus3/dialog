@@ -9,27 +9,43 @@ const waitDialogAnimation = (dialog: HTMLDialogElement) =>
     dialog.getAnimations().map((animation) => animation.finished),
   )
 
-const dialog1 = async () => {
+const handleShowDialog = async (dialog: HTMLDialogElement) => {
+  await waitDialogAnimation(dialog)
+  dialog.removeAttribute('style')
+  dialog.showModal()
+  document.documentElement.style.overflow = 'hidden'
+}
+
+const handleCloseDialog = async (event: Event, dialog: HTMLDialogElement) => {
+  if (isDialogElement(event.target)) {
+    await waitDialogAnimation(event.target)
+    dialog.style.display = 'none'
+    document.documentElement.removeAttribute('style')
+  }
+}
+
+const dialog1 = () => {
   const dialog1Button = document.getElementById('dialog1Button')
   const dialog1 = document.getElementById('dialog1')
 
   if (!isDialogElement(dialog1)) return
 
-  dialog1Button?.addEventListener('click', async () => {
-    await waitDialogAnimation(dialog1)
-
-    dialog1.removeAttribute('style')
-    dialog1.showModal()
-    document.documentElement.style.overflow = 'hidden'
+  dialog1Button?.addEventListener('click', () => {
+    handleShowDialog(dialog1)
   })
 
-  dialog1.addEventListener('close', async (e) => {
-    if (isDialogElement(e.target)) {
-      await waitDialogAnimation(e.target)
-      dialog1.style.display = 'none'
-      document.documentElement.removeAttribute('style')
-    }
+  dialog1.addEventListener('close', (e) => {
+    handleCloseDialog(e, dialog1)
   })
+}
+
+const handleForm = (dialog: HTMLDialogElement) => {
+  if (dialog.returnValue !== 'submit') return
+
+  const form = dialog.querySelector('form')
+  const data = new FormData(form || undefined)
+  console.info(Object.fromEntries(data.entries()))
+  form?.reset()
 }
 
 const dialog2 = () => {
@@ -38,25 +54,13 @@ const dialog2 = () => {
 
   if (!isDialogElement(dialog2)) return
 
-  dialog2Button?.addEventListener('click', async () => {
-    await waitDialogAnimation(dialog2)
-
-    dialog2.removeAttribute('style')
-    dialog2.showModal()
-    document.documentElement.style.overflow = 'hidden'
+  dialog2Button?.addEventListener('click', () => {
+    handleShowDialog(dialog2)
   })
 
   dialog2.addEventListener('close', async (e) => {
-    if (dialog2.returnValue === 'submit') {
-      const data = new FormData(dialog2.querySelector('form') || undefined)
-      console.info(Object.fromEntries(data.entries()))
-    }
-
-    if (!isDialogElement(e.target)) return
-
-    await waitDialogAnimation(e.target)
-    dialog2.style.display = 'none'
-    document.documentElement.removeAttribute('style')
+    handleForm(dialog2)
+    handleCloseDialog(e, dialog2)
   })
 }
 
@@ -66,7 +70,3 @@ const main = () => {
 }
 
 main()
-
-// 残りやること
-// 共通な処理を一つにまとめる
-// closeした際にremoveEventListenerする？
