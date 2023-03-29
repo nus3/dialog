@@ -63,7 +63,6 @@ body {
   background-color: var(--primary-color-opacity);
   cursor: pointer;
   color: inherit;
-  transition: outline-offset 0.1s ease;
   box-shadow: var(--button-shadow);
 }
 
@@ -76,10 +75,6 @@ body {
   font-weight: bold;
   width: 10rem;
   padding: 1rem;
-}
-
-.button:not(:active):focus-visible {
-  outline-offset: 5px;
 }
 
 .dialog {
@@ -117,6 +112,20 @@ body {
     animation-fill-mode: forwards;
     animation-duration: 200ms;
     animation-timing-function: ease-out;
+  }
+
+  .button {
+    transition: outline-offset 0.1s ease;
+  }
+  .button:not(:active):focus-visible {
+    outline-offset: 5px;
+  }
+
+  .dialog-header-close-button {
+    transition: outline-offset 0.1s ease;
+  }
+  .dialog-header-close-button:not(:active):focus-visible {
+    outline-offset: 5px;
   }
 }
 
@@ -163,17 +172,12 @@ body {
   border: none;
   border-radius: 50%;
   cursor: pointer;
-  transition: outline-offset 0.1s ease;
   width: 40px;
   height: 40px;
 }
 
 .dialog-header-close-button:hover {
   background-color: var(--bg-color-opacity);
-}
-
-.dialog-header-close-button:not(:active):focus-visible {
-  outline-offset: 5px;
 }
 
 .dialog-header-close-icon {
