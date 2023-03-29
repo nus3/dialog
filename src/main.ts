@@ -38,17 +38,29 @@ const dialog2 = () => {
 
   if (!isDialogElement(dialog2)) return
 
-  dialog2Button?.addEventListener('click', () => {
+  dialog2Button?.addEventListener('click', async () => {
+    await waitDialogAnimation(dialog2)
+
+    dialog2.removeAttribute('style')
     dialog2.showModal()
+    document.documentElement.style.overflow = 'hidden'
   })
 
-  const dialog2Close = document.getElementById('dialog2Close')
-  dialog2Close?.addEventListener('click', () => {
-    dialog2.close()
+  dialog2.addEventListener('close', async (e) => {
+    if (dialog2.returnValue === 'submit') {
+      const data = new FormData(dialog2.querySelector('form') || undefined)
+      console.info(Object.fromEntries(data.entries()))
+    }
+
+    if (!isDialogElement(e.target)) return
+
+    await waitDialogAnimation(e.target)
+    dialog2.style.display = 'none'
+    document.documentElement.removeAttribute('style')
   })
 }
 
-const main = async () => {
+const main = () => {
   dialog1()
   dialog2()
 }
@@ -56,4 +68,5 @@ const main = async () => {
 main()
 
 // 残りやること
-// フォームがあるダイアログ
+// 共通な処理を一つにまとめる
+// closeした際にremoveEventListenerする？

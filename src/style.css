@@ -211,7 +211,7 @@ body {
   justify-content: center;
   gap: 20px;
   padding: 1.6rem;
-  height: 140px;
+  padding-bottom: 0;
 }
 
 .text-field {

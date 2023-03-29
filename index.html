@@ -58,7 +58,7 @@
         <span class="dialog-header-title">Header</span>
         <button
           type="button"
-          onclick="this.closest('dialog').close()"
+          onclick="this.closest('dialog').close('close')"
           class="dialog-header-close-button"
         >
           <ion-icon
@@ -71,29 +71,41 @@
       <form class="form" method="dialog">
         <div class="text-field">
           <label for="name">Name</label>
-          <input class="input" type="text" id="name" autocomplete="off" />
+          <input
+            class="input"
+            type="text"
+            id="name"
+            name="name"
+            autocomplete="off"
+          />
         </div>
         <div class="text-field">
           <label for="email">E-Mail</label>
-          <input class="input" type="email" id="email" autocomplete="off" />
+          <input
+            class="input"
+            type="email"
+            id="email"
+            name="email"
+            autocomplete="off"
+          />
         </div>
+        <footer class="dialog-footer">
+          <button
+            type="submit"
+            class="button dialog-footer-button"
+            value="submit"
+          >
+            submit
+          </button>
+          <button
+            type="button"
+            onclick="this.closest('dialog').close('close')"
+            class="button dialog-footer-button"
+          >
+            cancel
+          </button>
+        </footer>
       </form>
-      <footer class="dialog-footer">
-        <button
-          type="submit"
-          onclick="this.closest('dialog').close()"
-          class="button dialog-footer-button"
-        >
-          submit
-        </button>
-        <button
-          type="button"
-          onclick="this.closest('dialog').close()"
-          class="button dialog-footer-button"
-        >
-          cancel
-        </button>
-      </footer>
     </dialog>
 
     <script type="module" src="/src/main.ts"></script>
