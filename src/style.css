@@ -89,7 +89,8 @@ body {
   width: 500px;
   padding: 1rem;
   position: fixed;
-  inset: 0;
+  inset-inline: 0;
+  inset-block: 0;
   margin: auto;
 }
 
@@ -100,15 +101,14 @@ body {
 
 @media (prefers-reduced-motion: no-preference) {
   .dialog {
-    animation-name: zoomOut;
+    animation-name: fadeOut, zoomOut;
     animation-fill-mode: forwards;
     animation-duration: 200ms;
     animation-timing-function: ease-out;
-    transition: opacity 0.2s;
   }
 
   .dialog[open] {
-    animation-name: zoomIn;
+    animation-name: fadeIn, zoomIn;
     animation-fill-mode: forwards;
     animation-duration: 200ms;
     animation-timing-function: ease-out;
@@ -126,6 +126,24 @@ body {
   }
   .dialog-header-close-button:not(:active):focus-visible {
     outline-offset: 5px;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
   }
 }
 

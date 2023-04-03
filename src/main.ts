@@ -35,6 +35,7 @@ const dialog1 = () => {
   })
 
   dialog1.addEventListener('close', (e) => {
+    console.info(dialog1.returnValue)
     handleCloseDialog(e, dialog1)
   })
 }
