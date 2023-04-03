@@ -4,8 +4,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Dialog</title>
-    <script type="module" crossorigin src="/dialog/assets/index-ac874348.js"></script>
-    <link rel="stylesheet" href="/dialog/assets/index-840299e1.css">
+    <script type="module" crossorigin src="/dialog/assets/index-7e4748f9.js"></script>
+    <link rel="stylesheet" href="/dialog/assets/index-beeee573.css">
   </head>
   <body>
     <main class="main">
@@ -26,7 +26,7 @@
         <span class="dialog-header-title">Header</span>
         <button
           type="button"
-          onclick="this.closest('dialog').close()"
+          onclick="this.closest('dialog').close('close')"
           class="dialog-header-close-button"
         >
           <ion-icon
@@ -36,26 +36,22 @@
           ></ion-icon>
         </button>
       </header>
-      <div class="dialog-content">Contents</div>
-      <footer class="dialog-footer">
-        <button
-          type="button"
-          onclick="this.closest('dialog').close()"
-          class="button dialog-footer-button"
-        >
-          ok
+      <div class="dialog-content">Message</div>
+      <form class="dialog-footer" method="dialog">
+        <button type="submit" class="button dialog-footer-button" value="ok">
+          Ok
         </button>
         <button
-          type="button"
-          onclick="this.closest('dialog').close()"
+          type="submit"
           class="button dialog-footer-button"
+          value="cancel"
         >
-          cancel
+          Cancel
         </button>
-      </footer>
+      </form>
     </dialog>
 
-    <dialog id="dialog2" class="dialog">
+    <dialog id="dialog2" class="dialog" style="display: none">
       <header class="dialog-header">
         <span class="dialog-header-title">Header</span>
         <button
@@ -91,22 +87,22 @@
             autocomplete="off"
           />
         </div>
-        <footer class="dialog-footer">
+        <div class="dialog-footer">
           <button
             type="submit"
             class="button dialog-footer-button"
             value="submit"
           >
-            submit
+            Submit
           </button>
           <button
             type="button"
             onclick="this.closest('dialog').close('close')"
             class="button dialog-footer-button"
           >
-            cancel
+            Cancel
           </button>
-        </footer>
+        </div>
       </form>
     </dialog>
 
